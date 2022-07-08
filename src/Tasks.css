@@ -1,0 +1,14 @@
+#c {
+    height: 40px;
+    overflow: hidden;
+}
+
+#b {
+    height: 60px;
+    width: 60px;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    border-radius: 45%;
+    margin-top: -42px;
+    box-shadow: inset 1px -1px 10px #bcbcbc, 1px 1px 1px #bcbcbc;
+}
