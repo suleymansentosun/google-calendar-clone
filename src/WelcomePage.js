@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 function WelcomePage() {
   const smallScreen = useMediaQuery("(max-width:600px)");
   const dispatch = useDispatch();
-  const loggedInUser = useSelector(state => state.auth.loggedInUser);
+  const loggedInUser = useSelector((state) => state.auth.loggedInUser);
   let navigate = useNavigate();
 
   if (loggedInUser) {
@@ -42,7 +42,7 @@ function WelcomePage() {
               height="24"
               xmlns="http://www.w3.org/2000/svg"
               aria-hidden="true"
-              class="l5Lhkf"
+              className="l5Lhkf"
             >
               <g id="qaEJec">
                 <path
@@ -93,9 +93,9 @@ function WelcomePage() {
                 color: "black",
                 textTransform: "none",
                 padding: "12px 22px",
-                ':hover': {
+                ":hover": {
                   backgroundColor: "#fff",
-                }
+                },
               }}
               onClick={() => dispatch(signInWithGoogleAccount())}
             >

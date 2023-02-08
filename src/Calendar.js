@@ -1,16 +1,17 @@
-import React from 'react';
-import DayCalendar from './DayCalendar';
-import WeekCalendar from './WeekCalendar';
+import React from "react";
+import DayCalendar from "./DayCalendar";
+import WeekCalendar from "./WeekCalendar";
 
 function Calendar(props) {
   const timeUnit = props.timeUnit;
+  const hours = props.hours;
   let calendar;
-  switch(timeUnit) {
+  switch (timeUnit) {
     case "day":
-      calendar = <DayCalendar />
+      calendar = <DayCalendar hours={hours} />;
       break;
     case "week":
-      calendar = <WeekCalendar />;
+      calendar = <WeekCalendar hours={hours} />;
       break;
     case "month":
       calendar = <div>Month calendar</div>;
@@ -19,9 +20,7 @@ function Calendar(props) {
       calendar = <div>Year calendar</div>;
       break;
   }
-  return (
-    <div>{calendar}</div>
-  );
+  return <div>{calendar}</div>;
 }
 
 export default Calendar;

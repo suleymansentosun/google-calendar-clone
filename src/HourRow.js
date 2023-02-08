@@ -1,41 +1,57 @@
-import { Divider, Grid, Typography } from "@mui/material";
+import { Divider, Grid } from "@mui/material";
+import { makeStyles } from "@material-ui/core/styles";
+import { Box } from "@mui/system";
 import React from "react";
 
+const useStyles = makeStyles((theme) => ({
+  scheduleBox: {
+    width: "90%",
+    height: "92%",
+    backgroundColor: "rgb(3, 155, 229)",
+    borderRadius: "4px",
+    color: "#fff",
+    paddingLeft: "6px",
+    paddingTop: "3px",
+    fontSize: "12px",
+    fontWeight: "500",
+  },
+}));
+
 function HourRow(props) {
+  const classes = useStyles();
+
   return (
-    <Grid item container>
-      {/* {props.hasHourInfo && (
-        <Grid item container direction="column" sx={{ width: "46.8px" }}>
-          <Grid
-            item
-            container
-            alignItems="flex-end"
-            justifyContent="flex-end"
-            sx={{ height: "55px", paddingRight: "7px" }}
-          >
-            <Grid item sx={{ position: "relative", top: "7.5px" }}>
-              <Typography sx={{ fontSize: "10px", color: "#70757a" }}>
-                {props.hour} AM
-              </Typography>
-            </Grid>
-          </Grid>
-        </Grid>
-      )} */}
+    <Grid
+      item
+      container
+      sx={{
+        position: props.isFirstRow ? "sticky" : "initial",
+        top: props.isFirstRow ? "64px" : "initial",
+        zIndex: props.isFirstRow ? "999" : "initial",
+      }}
+    >
       <Grid item container md sx={{ borderBottom: "1px solid #cdcdcd" }}>
-        {/* {props.hasHourInfo && <Grid item sx={{ width: "7px" }}></Grid>} */}
         <Grid
           item
           container
-          alignItems="center"
+          alignItems="flex-start"
           md
-          sx={{ borderLeft: "1px solid #cdcdcd", height: "55px" }}
+          sx={{
+            borderLeft: "1px solid #cdcdcd",
+            height: props.isFirstRow ? "6.2px" : "55px",
+            position: "relative",
+          }}
         >
+          {props.hasSchedule && (
+            <Box className={classes.scheduleBox}>Yoklama</Box>
+          )}
           {props.isCurrentHour && (
             <Grid
               item
               container
               alignItems="center"
-              style={{ position: "relative", left: "-6px" }}
+              // Buradaki 'top' ile dinamik bir şekilde oynayarak kırmızı çizgiyi hareket ettirelim
+              style={{ position: "absolute", left: "-6px", top: "20px" }}
             >
               <Grid item md="auto">
                 <div

@@ -1,59 +1,86 @@
-import { Divider, Grid, Typography } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import React from "react";
+import Clock from "./Clock";
 import HourRow from "./HourRow";
 
-function DayCalendar() {
-  const hours = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
-  17, 18, 19, 20, 21, 22, 23, 24];
+function DayCalendar(props) {
+  const hours = props.hours;
+
+  const daysOfWeek = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+  const date = new Date();
+  const dayOfWeek = daysOfWeek[date.getUTCDay()];
 
   return (
     <Grid container>
-      <Grid item container style={{ height: "84px", position: "sticky", top: "0px", zIndex: "99", background: "#ffffff" }} alignItems="flex-end">
-        <Grid item md="auto" sx={{ paddingRight: "7px" }}>
-          <Typography sx={{ fontSize: "10px", color: "#70757a" }}>
-            GMT+03
-          </Typography>
-        </Grid>
-        <Grid
-          item
-          md
-          container
-          alignItems="flex-end"
-          sx={{ borderBottom: "1px solid #cdcdcd" }}
-        >
-          <Grid item sx={{ width: "7px" }}></Grid>
+      <Grid item container>
+        <Clock hours={hours} />
+        <Grid item md container>
           <Grid
             item
             container
-            direction="column"
-            md
+            alignItems="center"
+            justifyContent="center"
             sx={{
-              borderLeft: "1px solid #cdcdcd",
-              paddingLeft: "7px",
-              paddingBottom: "7px",
+              position: "sticky",
+              top: "0",
+              zIndex: "1",
+              backgroundColor: "#fff",
+              paddingLeft: "5px",
             }}
           >
-            <Grid item container alignItems="center" justifyContent="center" 
-            style={{ width: "46px", height: "46px", backgroundColor: "#1a73e8", borderRadius: "30px" }}>
-              <Grid item sx={{ position: "absolute", top: "15px" }}>
-                <Typography sx={{ color: "#1a73e8", fontSize: "11px", fontWeight: "bold"  }}>
-                  FRI
-                </Typography>
-              </Grid>
-              <Grid item sx={{ padding: "5px" }}>
-                <Typography sx={{ color: "#fff", fontSize: "25px" }}>
-                  13
-                </Typography>
-              </Grid>
+            <Grid
+              item
+              container
+              alignItems="center"
+              justifyContent="flex-start"
+            >
+              <Box
+                sx={{
+                  color: "#1A73E8",
+                  fontSize: "11px",
+                  fontWeight: 500,
+                  marginLeft: "9px",
+                  marginBottom: "3.1px",
+                }}
+              >
+                MON
+              </Box>
+            </Grid>
+            <Grid
+              item
+              container
+              alignItems="center"
+              justifyContent="flex-start"
+            >
+              <Box
+                sx={{
+                  color: "#fff",
+                  fontSize: "26px",
+                  fontWeight: 400,
+                  backgroundColor: "#1A73E8",
+                  borderRadius: "50%",
+                  padding: "6px 9px",
+                  width: "30px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  height: "100%",
+                }}
+              >
+                <Box sx={{ position: "relative", top: "-2px" }}>26</Box>
+              </Box>
             </Grid>
           </Grid>
+          {hours.map((hour) => (
+            <HourRow
+              key={hour.toString()}
+              hour={hour}
+              isCurrentHour={hour === 1 ? true : false}
+              isFirstRow={hour === 0 ? true : false}
+              hasSchedule={hour === 15 ? true : false}
+            />
+          ))}
         </Grid>
-      </Grid>
-      <Grid item container>
-        {hours.map((hour) =>
-          <HourRow key={hour.toString()}
-                    hour={hour} isCurrentHour={hour === 1 ? true : false} hasHourInfo={true}/>
-        )}
       </Grid>
     </Grid>
   );
