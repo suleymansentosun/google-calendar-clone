@@ -6,9 +6,9 @@ import HourRow from "./HourRow";
 function DayCalendar(props) {
   const hours = props.hours;
 
-  const daysOfWeek = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
-  const date = new Date();
-  const dayOfWeek = daysOfWeek[date.getUTCDay()];
+  // const daysOfWeek = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+  // const date = new Date();
+  // const dayOfWeek = daysOfWeek[date.getUTCDay()];
 
   return (
     <Grid container>
@@ -71,12 +71,34 @@ function DayCalendar(props) {
               </Box>
             </Grid>
           </Grid>
+          <Grid
+            item
+            container
+            sx={{
+              position: "sticky",
+              top: "64px",
+              zIndex: "999",
+            }}
+          >
+            <Grid item container md sx={{ borderBottom: "1px solid #cdcdcd" }}>
+              <Grid
+                item
+                container
+                alignItems="flex-start"
+                md
+                sx={{
+                  borderLeft: "1px solid #cdcdcd",
+                  height: "14.2px",
+                  position: "relative",
+                }}
+              ></Grid>
+            </Grid>
+          </Grid>
           {hours.map((hour) => (
             <HourRow
               key={hour.toString()}
               hour={hour}
               isCurrentHour={hour === 1 ? true : false}
-              isFirstRow={hour === 0 ? true : false}
               hasSchedule={hour === 15 ? true : false}
             />
           ))}

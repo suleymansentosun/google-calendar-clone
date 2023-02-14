@@ -21,15 +21,7 @@ function HourRow(props) {
   const classes = useStyles();
 
   return (
-    <Grid
-      item
-      container
-      sx={{
-        position: props.isFirstRow ? "sticky" : "initial",
-        top: props.isFirstRow ? "64px" : "initial",
-        zIndex: props.isFirstRow ? "999" : "initial",
-      }}
-    >
+    <Grid item container>
       <Grid item container md sx={{ borderBottom: "1px solid #cdcdcd" }}>
         <Grid
           item
@@ -38,7 +30,7 @@ function HourRow(props) {
           md
           sx={{
             borderLeft: "1px solid #cdcdcd",
-            height: props.isFirstRow ? "6.2px" : "55px",
+            height: "56px",
             position: "relative",
           }}
         >

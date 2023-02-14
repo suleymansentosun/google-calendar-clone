@@ -19,6 +19,8 @@ function Calendar(props) {
     case "year":
       calendar = <div>Year calendar</div>;
       break;
+    default:
+      calendar = <WeekCalendar hours={hours} />;
   }
   return <div>{calendar}</div>;
 }

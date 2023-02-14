@@ -58,6 +58,8 @@ function WeekCalendar(props) {
                 fontSize: "11px",
                 fontWeight: 500,
                 marginBottom: "3.1px",
+                position: "relative",
+                top: "8px",
               }}
             >
               {firstThreeCaps(days[(0 + index) % 7])}
@@ -77,6 +79,8 @@ function WeekCalendar(props) {
                 alignItems: "center",
                 justifyContent: "center",
                 height: "100%",
+                position: "relative",
+                top: "8px",
               }}
             >
               <Box sx={{ position: "relative", top: "-2px" }}>
@@ -85,12 +89,34 @@ function WeekCalendar(props) {
             </Box>
           </Grid>
         </Grid>
+        <Grid
+          item
+          container
+          sx={{
+            position: "sticky",
+            top: "64px",
+            zIndex: "999",
+          }}
+        >
+          <Grid item container md sx={{ borderBottom: "1px solid #cdcdcd" }}>
+            <Grid
+              item
+              container
+              alignItems="flex-start"
+              md
+              sx={{
+                borderLeft: "1px solid #cdcdcd",
+                height: "15.2px",
+                position: "relative",
+              }}
+            ></Grid>
+          </Grid>
+        </Grid>
         {hours.map((hour) => (
           <HourRow
             key={hour.toString()}
             hour={hour}
             isCurrentHour={hour === 1 ? true : false}
-            isFirstRow={hour === 0 ? true : false}
             hasSchedule={day === "Wednesday" && hour === 15 ? true : false}
           />
         ))}
@@ -101,7 +127,6 @@ function WeekCalendar(props) {
   return (
     <Grid container>
       <Grid item container>
-        {/* 2.1 */}
         <Clock hours={hours} />
         {daysColumns}
       </Grid>

@@ -7,7 +7,7 @@ import Header from "./Header";
 import Tasks from "./Tasks";
 
 function HomePage() {
-  const hours = [...Array(25).keys()];
+  const hours = [...Array(24).keys()];
 
   return (
     <Grid container sx={{ height: "100%" }} wrap="nowrap">
@@ -39,10 +39,18 @@ function HomePage() {
           <Grid
             item
             md={9.65}
-            sx={{ height: "100%", marginTop: "15px" }}
+            sx={{ height: "100%", position: "relative" }}
             style={{ overflow: "scroll", overflowX: "hidden" }}
           >
-            <Calendar timeUnit="week" hours={hours} />
+            <div
+              style={{
+                paddingTop: "20px",
+                backgroundColor: "#fff",
+                zIndex: 999,
+              }}
+            >
+              <Calendar timeUnit="week" hours={hours} />
+            </div>
           </Grid>
         </Grid>
       </Box>

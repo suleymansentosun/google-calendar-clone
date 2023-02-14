@@ -2,19 +2,14 @@ import { Grid } from "@mui/material";
 import React from "react";
 
 export default function TimeInfo({ hour }) {
-  const twelveHour = hour % 12 || 12;
-  const isFirstRow = hour === 0;
+  const twelveHour = (hour + 1) % 12 || 12;
   return (
     <Grid
       md={12}
       item
       container
       sx={{
-        height: isFirstRow ? "71px" : "55.8px",
-        position: isFirstRow ? "sticky" : "initial",
-        top: isFirstRow ? "0" : "initial",
-        zIndex: isFirstRow ? "999" : "initial",
-        backgroundColor: isFirstRow ? "white" : "initial",
+        height: "56.91px",
       }}
     >
       <Grid
@@ -27,12 +22,15 @@ export default function TimeInfo({ hour }) {
           color: "gray",
         }}
       >
-        <Grid item>
-          {hour === 0
-            ? "GMT+01"
-            : hour === 24
-            ? ""
-            : twelveHour + " " + (hour < 12 ? "AM" : "PM")}
+        <Grid
+          item
+          style={{
+            position: "relative",
+            top: "5px",
+            left: "15px",
+          }}
+        >
+          {hour === 23 ? "" : twelveHour + " " + (hour < 12 ? "AM" : "PM")}
         </Grid>
       </Grid>
     </Grid>
