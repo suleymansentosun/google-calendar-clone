@@ -9,6 +9,8 @@ import Tasks from "./Tasks";
 function HomePage() {
   const hours = [...Array(24).keys()];
 
+  let timeUnit = "month";
+
   return (
     <Grid container sx={{ height: "100%" }} wrap="nowrap">
       <Box
@@ -40,16 +42,20 @@ function HomePage() {
             item
             md={9.65}
             sx={{ height: "100%", position: "relative" }}
-            style={{ overflow: "scroll", overflowX: "hidden" }}
+            style={{
+              overflow: timeUnit !== "month" ? "scroll" : "initial",
+              overflowX: timeUnit !== "month" ? "hidden" : "initial",
+            }}
           >
             <div
               style={{
-                paddingTop: "20px",
+                paddingTop: timeUnit !== "month" ? "20px" : "0px",
                 backgroundColor: "#fff",
                 zIndex: 999,
+                height: timeUnit === "month" ? "100%" : "initial",
               }}
             >
-              <Calendar timeUnit="week" hours={hours} />
+              <Calendar timeUnit={timeUnit} hours={hours} />
             </div>
           </Grid>
         </Grid>

@@ -4,7 +4,7 @@ import React from "react";
 import Clock from "./Clock";
 import HourRow from "./HourRow";
 
-function WeekCalendar(props) {
+export function WeekCalendar(props) {
   function firstThreeCaps(str) {
     return str.substring(0, 3).toUpperCase();
   }
@@ -133,5 +133,3 @@ function WeekCalendar(props) {
     </Grid>
   );
 }
-
-export default WeekCalendar;

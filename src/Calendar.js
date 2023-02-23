@@ -1,6 +1,7 @@
 import React from "react";
-import DayCalendar from "./DayCalendar";
-import WeekCalendar from "./WeekCalendar";
+import { DayCalendar } from "./DayCalendar";
+import { MonthCalendar } from "./MonthCalendar";
+import { WeekCalendar } from "./WeekCalendar";
 
 function Calendar(props) {
   const timeUnit = props.timeUnit;
@@ -14,7 +15,7 @@ function Calendar(props) {
       calendar = <WeekCalendar hours={hours} />;
       break;
     case "month":
-      calendar = <div>Month calendar</div>;
+      calendar = <MonthCalendar />;
       break;
     case "year":
       calendar = <div>Year calendar</div>;
@@ -22,7 +23,11 @@ function Calendar(props) {
     default:
       calendar = <WeekCalendar hours={hours} />;
   }
-  return <div>{calendar}</div>;
+  return (
+    <div style={{ height: timeUnit === "month" ? "100%" : "initial" }}>
+      {calendar}
+    </div>
+  );
 }
 
 export default Calendar;

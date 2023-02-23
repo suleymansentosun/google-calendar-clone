@@ -3,7 +3,7 @@ import React from "react";
 import Clock from "./Clock";
 import HourRow from "./HourRow";
 
-function DayCalendar(props) {
+export function DayCalendar(props) {
   const hours = props.hours;
 
   // const daysOfWeek = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
@@ -88,7 +88,7 @@ function DayCalendar(props) {
                 md
                 sx={{
                   borderLeft: "1px solid #cdcdcd",
-                  height: "14.2px",
+                  height: "15.5px",
                   position: "relative",
                 }}
               ></Grid>
@@ -107,5 +107,3 @@ function DayCalendar(props) {
     </Grid>
   );
 }
-
-export default DayCalendar;
